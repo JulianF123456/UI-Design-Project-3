@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Order_Confirmation_Page.css">
+    <title>CMYK Colour Online</title>
+</head>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to generate a random alphanumeric string of a specified length
+    function generateRandomAlphaNumeric(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    // Generate a random order code of length 8 with letters mixed with numbers
+    var randomOrderCode = generateRandomAlphaNumeric(15);
+
+    // Get the span element where the order code will be displayed
+    var orderCodeElement = document.getElementById("order-number");
+
+    // Set the generated random order code as the text content of the span element
+    orderCodeElement.textContent = randomOrderCode;
+
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+    // Redirect to Product_page.html when Products nav button is clicked
+    document.querySelector("nav p:nth-of-type(1)").addEventListener("click", function() {
+        navigateToPage("Product_Page.html");
+    });
+
+            // Redirect to Basket_Page.html when the shopping cart image is clicked
+    document.querySelector(".cart_img").addEventListener("click", function() {
+        navigateToPage("Basket_Page.html");
+    });
+
+    document.getElementById("return-button").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+
+    document.querySelector(".logo").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+
+            //add a listner that takes user to product page when they press enter.
+            //add listner for the logo that takes user back to homepage.
+});
+</script>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <nav>
+                <img src="logo.png" alt="alternatetext" class="logo">
+                <p>Products</p>
+                <p>FAQ's</p>
+                <p>Contact us</p>
+                <img src="shoppingcart.png" alt="alternatetext" class="cart_img">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="confirmation_box">
+                <p>Your order has been confirmed! Thanks for shopping with us :)</p>
+                <img src="tick.png" alt="Tick image">
+                <p>Your Order Number is: #<span id="order-number"></span></p>
+            </div>
+            <button id="return-button">Return to Home Page</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+                <p>Contact us</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

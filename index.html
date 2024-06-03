@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Homepage.css">
+    <title>CMYK Colour Online</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function navigateToPage(pageUrl) {
+                window.location.href = pageUrl;
+            }
+            // Redirect to Product_page.html when Products nav button is clicked
+            document.querySelector("nav p:nth-of-type(1)").addEventListener("click", function() {
+                navigateToPage("Product_Page.html");
+            });
+
+            // Redirect to Basket_Page.html when the shopping cart image is clicked
+            document.querySelector(".cart_img").addEventListener("click", function() {
+                navigateToPage("Basket_Page.html");
+            });
+
+            document.getElementById("button1").addEventListener("click", function() {
+                navigateToPage("Product_Page.html");
+            });
+
+            // Redirect to Product_page.html when Shop Now button is clicked
+            document.getElementById("button2").addEventListener("click", function() {
+                navigateToPage("Product_Page.html");
+            });
+
+            // Redirect to Product_page.html when search icon is clicked, if there is input
+            document.getElementById("searchicon").addEventListener("click", function() {
+                var searchInput = document.getElementById("searchInput").value;
+                if (searchInput.trim() !== "") {
+                    navigateToPage("Product_Page.html");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <nav>
+                <img src="logo.png" alt="alternatetext" class="logo">
+                <p>Products</p>
+                <p>FAQ's</p>
+                <p>Contact us</p>
+                <img src="shoppingcart.png" alt="alternatetext" class="cart_img">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-tools">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search Items">
+                <img src="searchicon.png" id="searchicon" class="search-icon">
+            </div>
+            <div class="browse-buttons">
+                <button id="button1">Products</button>
+                <button id="button2">Shop Now</button>
+            </div>
+            <div class="advertising_imgs">
+                <img src="advert1.png" alt="advert1" class="advert1">
+                <img src="advert2.png" alt="advert2" class="advert2">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+                <p>Contact us</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

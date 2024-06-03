@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Basket_Page.css">
+    <title>CMYK Colour Online - Basket</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <nav>
+                <img src="logo.png" alt="alternatetext" class="logo">
+                <p>Products</p>
+                <p>FAQ's</p>
+                <p>Contact us</p>
+                <img src="shoppingcart.png" alt="alternatetext" class="cart_img" href="index.html">
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="product-display" id="product-display">
+                <!-- Product items will be dynamically added here -->
+            </div>
+            <div class="order-information" id="order-information">
+                <!-- Order summary or additional information will be dynamically added here -->
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button id="checkout">Continue to Checkout</button>
+            <button id="return-home">Return Home</button>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+                <p>Contact us</p>
+            </nav>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    const productDisplay = document.getElementById('product-display');
+    const orderInformation = document.getElementById('order-information');
+    const basket = JSON.parse(localStorage.getItem('basket')) || [];
+
+    function renderBasket() {
+        productDisplay.innerHTML = '';
+        orderInformation.innerHTML = '';
+
+        let totalPrice = 0;
+
+        basket.forEach((item, index) => {
+            const productHTML = `
+                <div class="product-display-item">
+                    <div class="product-img">
+                        <img src="${item.imageSrc}" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-title"><b>Product:</b> ${item.title}</p>
+                        <p class="product-price"><b>Price:</b> $${item.price}</p>
+                        <button class="remove-item" data-index="${index}">Remove</button>
+                    </div>
+                </div>
+            `;
+            productDisplay.innerHTML += productHTML;
+
+            const orderHTML = `
+                <div class="order-summary">
+                    <p class="order-title"><b>Product:</b> ${item.title} <b>Price:</b> $${item.price}</p>
+                </div>
+            `;
+            orderInformation.innerHTML += orderHTML;
+
+            totalPrice += item.price;
+        });
+
+        if (basket.length > 0) {
+            const totalHTML = `
+                <div class="total-price">
+                    <b>Total Price:</b> $${totalPrice.toFixed(2)}
+                </div>
+            `;
+            orderInformation.innerHTML += totalHTML;
+        }
+
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                basket.splice(index, 1);
+                localStorage.setItem('basket', JSON.stringify(basket));
+                renderBasket();
+            });
+        });
+    }
+
+    renderBasket();
+
+    document.getElementById('checkout').addEventListener('click', function() {
+        navigateToPage('Billing_Page.html');
+    });
+
+    document.getElementById('return-home').addEventListener('click', function() {
+        navigateToPage('index.html');
+    });
+
+    document.querySelector(".cart_img").addEventListener("click", function() {
+        navigateToPage("Basket_Page.html");
+    });
+
+    document.querySelector("nav p:nth-of-type(1)").addEventListener("click", function() {
+        navigateToPage("Product_page.html");
+    });
+
+    document.querySelector('.logo').addEventListener('click', function() {
+        navigateToPage('index.html');
+    });
+});
+
+    </script>
+</body>
+</html>

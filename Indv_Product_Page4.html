@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Indv_Product_Page.css">
+    <title>CMYK Colour Online</title>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    document.getElementById('QP-button').addEventListener('click', function() {
+        navigateToPage('Pricing_Quantity_Page4.html');
+    });
+
+    document.getElementById('CS-button').addEventListener('click',function() {
+        navigateToPage('Product_Page.html');
+    });
+
+    document.querySelector(".logo").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+});
+</script>
+<body>
+    <main>
+        <div class="product_images">
+            <img src="product4.png" alt="product1" class="product1">
+            <img src="Product4-2.png" alt="product1-2" class="product1-2">
+        </div>
+        <div class="product-options">
+            <p>4pp 148mm Square Greeting Card</p>
+            <div class="product-buttons">
+                <button id="specifications-buttin">Specifications</button>
+                <button id="art-options">Art Options</button>
+                <button id="Gallery">Art Gallery</button>
+                <button id="QP-button">Select Quantity and Price</button>
+                <button id="CS-button">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="product-information">
+            <p><b style="font-size: 20px;">Price:</b> $3</p>
+            <p>What better way to express a heartfelt gesture than to send a printed greeting card! No matter the occasion, a personalised greeting card is always appreciated. Make your greeting cards come to life by creating your 100% customised design using our free guideline templates.</p>
+            <p>Do you want to connect to your customers on a deeper and more intimate level? 4pp 148mm square greeting cards are the perfect medium for businesses to engage and build relationships with their clients.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Specifications</p>
+                <p>Options</p>
+                <p>Gallery</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

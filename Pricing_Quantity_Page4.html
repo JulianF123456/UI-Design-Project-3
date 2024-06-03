@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Pricing_Quantity_Page.css">
+    <title>CMYK Colour Online</title>
+</head>
+<body>
+    <main>
+        <div class="product_images">
+            <img src="product4.png" alt="product1" class="product1">
+            <img src="product4-2.png" alt="product1-2" class="product1-2">
+        </div>
+        <div class="product-options">
+            <p>A5 Folded to A6 Greeting Card</p>
+            <form>
+                <div class="form-container">
+                    <div class="select-grid1">
+                        <label class="option-p" for="size">Size:</label>
+                        <select class="option" id="size" name="size">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="4pp DL folded to DL - 99x210">4pp DL folded to DL - 99x210</option>
+                        </select>
+
+                        <label class="option-p" for="fold-type">Fold Type:</label>
+                        <select class="option" id="fold-type" name="fold-type">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="4pp Half Fold">4pp Half Fold</option>
+                        </select>
+
+                        <label class="option-p" for="printing">Printing:</label>
+                        <select class="option" id="printing" name="printing">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="Full Colour (CMYK) one side">Full Colour (CMYK) one side</option>
+                            <option value="Full Colour (CMYK) two sides">Full Colour (CMYK) two sides</option>
+                        </select>
+
+                        <label class="option-p" for="stock">Stock:</label>
+                        <select class="option" id="stock" name="stock">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="235gsm Coated Front/Uncoated Back">235gsm Coated Front/Uncoated Back</option>
+                            <option value="280gsm Linen Uncoated Board">280gsm Linen Uncoated Board</option>
+                            <option value="350gsm Linen Uncoated Board">350gsm Linen Uncoated Board</option>
+                            <option value="350gsm Matt-Satin Artboard">350gsm Matt-Satin Artboard</option>
+                            <option value="350gsm Recycled Uncoated Board">350gsm Recycled Uncoated Board</option>
+                            <option value="350gsm Uncoated Board">350gsm Uncoated Board</option>
+                            <option value="381um (225gsm) Kraft Board">381um (225gsm) Kraft Board</option>
+                        </select>
+                    </div>
+                    <div class="select-grid2">
+                        <label class="option-p" for="laminated">Laminated Front Type:</label>
+                        <select class="option" id="laminated" name="laminated">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="None">None</option>
+                            <option value="Gloss Laminate">Gloss Laminate</option>
+                            <option value="Matt Laminate">Matt Laminate</option>
+                            <option value="Velvet Laminate">Velvet Laminate</option>
+                        </select>
+
+                        <label class="option-p" for="envelope">Envelope Type:</label>
+                        <select class="option" id="envelope" name="envelope">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="None">None</option>
+                            <option value="Plain 80gsm White Envelopes Included">Plain 80gsm White Envelopes Included</option>
+                            <option value="Plain 80gsm Kraft Envelopes Included">Plain 80gsm Kraft Envelopes Included</option>
+                        </select>
+
+                        <label class="option-p" for="quantity">Select Quantity:</label>
+                        <input class="option" type="number" id="quantity" name="quantity" min="1" value="1">
+
+                        <label class="option-p" for="proof">Proof:</label>
+                        <select class="option" id="proof" name="proof">
+                            <option value="" disabled selected>Select:</option>
+                            <option value="One Free Pre-Flight & PDF Proof">One Free Pre-Flight & PDF Proof</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="nav-buttons">
+                <button id="Add-to-Basket">Add to Basket</button>
+                <button id="Continue-Shopping">Continue Shopping</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Specifications</p>
+                <p>Options</p>
+                <p>Gallery</p>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function navigateToPage(pageUrl) {
+                window.location.href = pageUrl;
+            }
+
+            document.getElementById('Add-to-Basket').addEventListener('click', function() {
+                const requiredFields = ['size', 'fold-type', 'printing', 'stock', 'laminated', 'envelope', 'quantity', 'proof'];
+                let allFieldsFilled = true;
+
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field.value || field.value === 'Select:' || field.value === '') {
+                        allFieldsFilled = false;
+                    }
+                });
+
+                if (!allFieldsFilled) {
+                    alert("Please fill out all product options before adding to the basket.");
+                    return;
+                }
+
+                const productDetails = {
+                    imageSrc: document.querySelector('.product1').src,
+                    title: document.querySelector('.product-options p').innerText,
+                    price: calculatePrice(),
+                    options: {
+                        size: document.getElementById('size').value,
+                        foldType: document.getElementById('fold-type').value,
+                        printing: document.getElementById('printing').value,
+                        stock: document.getElementById('stock').value,
+                        laminated: document.getElementById('laminated').value,
+                        envelope: document.getElementById('envelope').value,
+                        quantity: document.getElementById('quantity').value,
+                        proof: document.getElementById('proof').value
+                    }
+                };
+
+                addToBasket(productDetails);
+                navigateToPage('Basket_Page.html');
+            });
+
+            document.getElementById('Continue-Shopping').addEventListener('click', function() {
+                navigateToPage('Product_Page.html');
+            });
+
+            function calculatePrice() {
+                const basePrice = 3; // Example base price per unit
+                const quantity = parseInt(document.getElementById('quantity').value, 10);
+                return basePrice * quantity;
+            }
+
+            function addToBasket(product) {
+                let basket = JSON.parse(localStorage.getItem('basket')) || [];
+                basket.push(product);
+                localStorage.setItem('basket', JSON.stringify(basket));
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Indv_Product_Page.css">
+    <title>CMYK Colour Online</title>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    document.getElementById('QP-button').addEventListener('click', function() {
+        navigateToPage('Pricing_Quantity_Page2.html');
+    });
+
+    document.getElementById('CS-button').addEventListener('click',function() {
+        navigateToPage('Product_Page.html');
+    });
+
+    document.querySelector(".logo").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+});
+</script>
+<body>
+    <main>
+        <div class="product_images">
+            <img src="product2-1.png" alt="product1" class="product1">
+            <img src="Product2-2.png" alt="product1-2" class="product1-2">
+        </div>
+        <div class="product-options">
+            <p>A5 Folded to A6 Greeting Card</p>
+            <div class="product-buttons">
+                <button id="specifications-buttin">Specifications</button>
+                <button id="art-options">Art Options</button>
+                <button id="Gallery">Art Gallery</button>
+                <button id="QP-button">Select Quantity and Price</button>
+                <button id="CS-button">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="product-information">
+            <p><b style="font-size: 20px;">Price:</b> $3</p>
+            <p>Who doesn't love receiving a greeting card! Our printed greeting cards, printed in Australia are perfect for any situation. As they are 100% customisable you can tailor them for anyone, no matter their age or gender or the special occasion. Greeting cards are also a great marketing tool for businesses. They are a brilliant way to engage with your customers on a truly personal level.</p>
+            <p>Printed A5 folded to A6 greeting cards make fabulous invitations, Christmas cards, mothers and Father’s Day cards, anniversary invitations, birthday invitations, corporate cards, engagement invitations, wedding invitations, Easter cards and much more.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Specifications</p>
+                <p>Options</p>
+                <p>Gallery</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

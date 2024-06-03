@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Indv_Product_Page.css">
+    <title>CMYK Colour Online</title>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    document.getElementById('QP-button').addEventListener('click', function() {
+        navigateToPage('Pricing_Quantity_Page.html');
+    });
+
+    document.getElementById('CS-button').addEventListener('click',function() {
+        navigateToPage('Product_Page.html');
+    });
+
+    document.querySelector(".logo").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+});
+</script>
+<body>
+    <main>
+        <div class="product_images">
+            <img src="product1.png" alt="product1" class="product1">
+            <img src="product1-2.png" alt="product1-2" class="product1-2">
+        </div>
+        <div class="product-options">
+            <p>4pp DL Folded to DL</p>
+            <div class="product-buttons">
+                <button id="specifications-buttin">Specifications</button>
+                <button id="art-options">Art Options</button>
+                <button id="Gallery">Art Gallery</button>
+                <button id="QP-button">Select Quantity and Price</button>
+                <button id="CS-button">Continue Shopping</button>
+            </div>
+        </div>
+        <div class="product-information">
+            <p><b style="font-size: 20px;">Price:</b> $3</p>
+            <p>When you truly want to say something special, nothing works better than a printed personalised greeting card. Our 100% customisable greeting cards are perfect for all situations and can be customised for anyone no matter the special occasion.</p>
+            <p>Australian printed 4pp DL Folded to DL greeting cards are perfect for any occasion. From invitations, Christmas cards, mothers and Father’s Day cards, anniversary invitations, birthday invitations, corporate cards, engagement invitations, wedding invitations, Easter cards and much more.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Specifications</p>
+                <p>Options</p>
+                <p>Gallery</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>

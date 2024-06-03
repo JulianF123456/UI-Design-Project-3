@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Product_Page.css">
+    <title>CMYK Colour Online</title>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Function to navigate to a specific page
+    function navigateToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    // Add click event listeners for navigation bar items
+    document.querySelector('.cart_img').addEventListener('click', function () {
+        navigateToPage('Basket_Page.html');
+    });
+
+    // Add click event listener for search icon
+    document.getElementById('searchicon').addEventListener('click', function () {
+        const searchInput = document.getElementById('searchInput').value;
+        if (searchInput) {
+            navigateToPage('Product_Page.html');
+        }
+    });
+
+    document.querySelector('.logo').addEventListener('click', function() {
+        navigateToPage('index.html');
+    })
+
+    // Add click event listeners for product items on the product page
+    document.querySelectorAll('.product1').forEach(product => {
+        product.addEventListener('click', function () {
+            // Assuming you have some mechanism to identify the product, e.g., data attributes
+            navigateToPage(`Indv_Product_Page1.html`);
+        });
+
+        product.querySelectorAll('.product-img, .product-name, .shop-link').forEach(element => {
+            element.addEventListener('click', function (event) {
+                navigateToPage(`Indv_Product_Page1.html`);
+            });
+        });
+    });
+
+    document.querySelectorAll('.product2').forEach(product => {
+        product.addEventListener('click', function () {
+            // Assuming you have some mechanism to identify the product, e.g., data attributes
+            navigateToPage(`Indv_Product_Page2.html`);
+        });
+
+        product.querySelectorAll('.product-img, .product-name, .shop-link').forEach(element => {
+            element.addEventListener('click', function (event) {
+                navigateToPage(`Indv_Product_Page2.html`);
+            });
+        });
+    });
+
+    document.querySelectorAll('.product3').forEach(product => {
+        product.addEventListener('click', function () {
+            // Assuming you have some mechanism to identify the product, e.g., data attributes
+            navigateToPage(`Indv_Product_Page3.html`);
+        });
+
+        product.querySelectorAll('.product-img, .product-name, .shop-link').forEach(element => {
+            element.addEventListener('click', function (event) {
+                navigateToPage(`Indv_Product_Page3.html`);
+            });
+        });
+    });
+
+    document.querySelectorAll('.product4').forEach(product => {
+        product.addEventListener('click', function () {
+            // Assuming you have some mechanism to identify the product, e.g., data attributes
+            navigateToPage(`Indv_Product_Page4.html`);
+        });
+
+        product.querySelectorAll('.product-img, .product-name, .shop-link').forEach(element => {
+            element.addEventListener('click', function (event) {
+                navigateToPage(`Indv_Product_Page4.html`);
+            });
+        });
+    });
+
+    // Add click event listener for cart image on individual product page
+    const indvProductCartImg = document.querySelector('.cart_img');
+    if (indvProductCartImg) {
+        indvProductCartImg.addEventListener('click', function () {
+            navigateToPage('Basket_Page.html');
+        });
+    }
+
+    // Ensure nav bar and search bar on the individual product page have the same functionality
+    const navItems = document.querySelectorAll('nav p');
+    if (navItems.length > 0) {
+        navItems[0].addEventListener('click', function () {
+            navigateToPage('Product_Page.html');
+        });
+    }
+
+    const searchIcon = document.getElementById('searchicon');
+    if (searchIcon) {
+        searchIcon.addEventListener('click', function () {
+            const searchInput = document.getElementById('searchInput').value;
+            if (searchInput) {
+                navigateToPage('Product_Page.html');
+            }
+        });
+    }
+
+    document.querySelector(".logo").addEventListener("click", function() {
+        navigateToPage('index.html');
+    });
+    
+    });
+
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <nav>
+                <img src="logo.png" alt="alternatetext" class="logo">
+                <p>Products</p>
+                <p>FAQ's</p>
+                <p>Contact us</p>
+                <img src="shoppingcart.png" alt="alternatetext" class="cart_img">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="filter-bar">
+            <p><u>Select Filter Options:</u></p>
+            <label><input type="checkbox" name="filter" value="filter1"> Filter 1</label>
+            <label><input type="checkbox" name="filter" value="filter2"> Filter 2</label>
+            <label><input type="checkbox" name="filter" value="filter3"> Filter 3</label>
+            <label><input type="checkbox" name="filter" value="filter4"> Filter 4</label>
+            <label><input type="checkbox" name="filter" value="filter5"> Filter 5</label>
+            <button class="apply-filter">Apply Filter</button>
+        </div>
+        <div class="content-area">
+            <div class="search-tools">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search Items">
+                    <img src="searchicon.png" id="searchicon" class="search-icon">
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="product1">
+                    <img src="product1.png" alt="Product 1" class="product-img">
+                    <div>
+                        <u><p class="product-name">A5 Folded to A6</p></u>
+                        <p class="product-price">$3 per card</p>
+                        <p class="shop-link">Shop Now</p>
+                    </div>
+                </div>
+                <div class="product2">
+                    <img src="product2.png" alt="Product 2" class="product-img">
+                    <div>
+                        <u><p class="product-name">4pp DL Folded to DL</p></u>
+                        <p class="product-price">$3 per card</p>
+                        <p class="shop-link">Shop Now</p>
+                    </div>
+                </div>
+                <div class="product3">
+                    <img src="product3.png" alt="Product 3" class="product-img">
+                    <div>
+                        <u><p class="product-name">A4 Folded to A5</p></u>
+                        <p class="product-price">$3 per card</p>
+                        <p class="shop-link">Shop Now</p>
+                    </div>
+                </div>
+                <div class="product4">
+                    <img src="product4.png" alt="Product 4" class="product-img">
+                    <div>
+                        <u><p class="product-name">4pp 148mm Square</p></u>
+                        <p class="product-price">$3 per card</p>
+                        <p class="shop-link">Shop Now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+                <p>Contact us</p>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
